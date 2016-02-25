@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title> Editor </title>
+	 <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body class="editor">
+	Any changes made can be saved by clicking submit ! <br>
+	<% if(type == "new"){ %>
+		Creating <%= filename %> <br>
+	<form action="/save" method="POST">
+		<button onclick="function(){document.getElementById('tb1').value = '';}">Clear&nbsp;</button>
+		<input type= "submit" >
+		<br>
+		<% if( type == "new"){ %>
+		<label>
+			File Name
+		<input type="text" name="filename"  value="<%= filename %>" placeholder="File Name"></label>
+		<% }else{ %>
+		<label class="text">
+			File Name
+		<input type="text" hidden="true" value="<%= filename %>" name="filename"></label>
+		<%}%>
+		
+			<br>
+			File Contents
+		<input type="textarea" name="text" id="tb1" value="<%= initialValue %>" placeholder="Enter contents of file"></label>
+	</form>
+	<% } %>
+	<% if( type == "edit"){ %>
+		Editing <%= filename %> <br>
+	<form action="/save" method="POST">
+		<button onclick="function(){document.getElementById('tb1').value = '';}">Clear&nbsp;</button>
+		<input type= "submit" >
+		<br>
+		<% if( type == "new"){ %>
+		<label>
+			
+		<input type="text" name="filename" value="<%= filename %>"></label>
+		<% }else{ %>
+		<label>
+			
+		<input type="text" hidden="true" value="<%= filename %>" name="filename"></label>
+		<%}%>
+		<br>
+		<label >
+			File Contents
+		<input type="textarea" name="text" id="tb1" value="<%= initialValue %>"></label>
+	</form>
+	<% } %>
+	<% if( type == "read"){ %>
+		Reading <%= filename %> <br>
+	<form action="/read" method="POST">
+		<button onclick="function(){document.getElementById('tb1').value = '';}">Clear&nbsp;</button>
+		<input type= "submit" >
+		<br>
+		<% if( type == "new"){ %>
+		<label>
+			
+		<input type="text" name="filename" value="<%= filename %>"></label>
+		<% }else{ %>
+		<label>
+			
+		<input type="text" hidden="true" value="<%= filename %>" name="filename"></label>
+		<%}%>
+		<br>
+		<label >
+			File Contents
+		<input type="textview" name="text" id="tb1" value="<%= initialValue %>"></label>
+	</form>
+		<% } %>
+	<% if( type == "append"){ %>
+		Appending into  <%= filename %> <br>
+	<form action="/append" method="POST">
+		<button onclick="function(){document.getElementById('tb1').value = '';}">Clear&nbsp;</button>
+		<input type= "submit" >
+		<br>
+		<% if( type == "new"){ %>
+		<label>
+		
+		<input type="text" name="filename" value="<%= filename %>"></label>
+		<% }else{ %>
+		<label>
+		
+		<input type="text" hidden="true" value="<%= filename %>" name="filename"></label>
+		<%}%>
+		<br>
+		<label >
+			File Contents
+		<input type="textarea" name="text" id="tb1"  name="add"></label>
+	</form>
+		<% } %>
+</body>
+</html>
